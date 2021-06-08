@@ -302,7 +302,7 @@ class DTLN_model():
         for idx in range(num_layer):
             in_state = [in_states[:,idx,:, 0], in_states[:,idx,:, 1]]
             x, h_state, c_state = LSTM(self.numUnits, return_sequences=True, 
-                     unroll=True, return_state=True)(x, initial_state=in_state)
+                     unroll=False, return_state=True)(x, initial_state=in_state)
             # using dropout between the LSTM layer for regularization 
             if idx<(num_layer-1):
                 x = Dropout(self.dropout)(x)
